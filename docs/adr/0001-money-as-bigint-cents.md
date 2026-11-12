@@ -1,0 +1,3 @@
+# Money is held as bigint cents, not Decimal
+
+The spec's `Money` skeleton uses a `Decimal`, but the spec also fixes the scale at 2 decimal places for every currency and allows adapted signatures. We hold amounts as a `bigint` count of cents inside `Money`: integer arithmetic is exact, needs no dependency, and there is nothing to round because inputs with more than two decimals are rejected. The database still stores `NUMERIC(19,2)` so the schema reads naturally; the mapper converts through the decimal string. If a currency with a different scale is ever needed, this decision must be revisited.

@@ -1,0 +1,41 @@
+{
+  "name": "junglegame",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "bun src/main.ts",
+    "test": "bun test",
+    "test:unit": "bun test test/unit",
+    "test:integration": "bun test test/integration",
+    "test:concurrency": "bun test test/concurrency",
+    "test:multi-instance": "bun test test/multi-instance",
+    "test:load": "flock ~/.cache/junglegame-db.lock bun test/load/run.ts",
+    "test:mutants": "flock ~/.cache/junglegame-db.lock bun test/mutations/run.ts",
+    "test:property": "bun test test/property",
+    "test:experiments": "bun test test/experiments",
+    "playbook": "flock ~/.cache/junglegame-db.lock bun test/playbook.ts",
+    "dashboard": "flock ~/.cache/junglegame-db.lock bun test/dashboard.ts"
+  },
+  "dependencies": {
+    "@aws-sdk/client-sqs": "^3.1166.0",
+    "@mikro-orm/cli": "7.2.8",
+    "@mikro-orm/core": "7.2.8",
+    "@mikro-orm/migrations": "7.2.8",
+    "@mikro-orm/postgresql": "7.2.8",
+    "@nestjs/common": "^11",
+    "@nestjs/core": "^11",
+    "@nestjs/platform-express": "^11",
+    "@nestjs/swagger": "^11",
+    "pino": "^10.4.0",
+    "prom-client": "^15.1.3",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2",
+    "tinyglobby": "^0.2.17",
+    "uuid": "^14.0.3"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.4.4",
+    "fast-check": "^4.10.2",
+    "typescript": "^7.0.2"
+  }
+}
